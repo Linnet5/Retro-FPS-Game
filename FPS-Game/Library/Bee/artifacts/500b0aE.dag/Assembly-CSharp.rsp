@@ -317,6 +317,7 @@
 "Assets/Controller/First person controller/Scripts/FirstPersonLook.cs"
 "Assets/Controller/First person controller/Scripts/FirstPersonMovement.cs"
 "Assets/Controller/FPS_Shooting.cs"
+"Assets/Scripts/ItemSway.cs"
 -langversion:8.0
 
 /deterministic

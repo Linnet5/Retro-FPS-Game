@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class FPS_Shooting : MonoBehaviour {
     [SerializeField] private Camera _camera;
+    [SerializeField] private Animator pistolAnimator;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -16,15 +17,14 @@ public class FPS_Shooting : MonoBehaviour {
         RaycastHit hit;
 
         if(Input.GetMouseButtonDown(0)){
-            Debug.Log("Firing");
+            pistolAnimator.SetTrigger("Shoots");
+            //pistolAnimator.ResetTrigger("Shoots");
             Ray ray = new Ray(_camera.transform.position, _camera.transform.forward);
             if(Physics.Raycast(ray, out hit)) {
-                Debug.DrawRay(ray.origin, ray.direction*100.0f, Color.red, 1.0f);
                 Transform objectHit = hit.transform;
-                Debug.Log(objectHit);
-            }
-            else {
-                Debug.Log("No object hit");
+                if(objectHit.gameObject.CompareTag("Enemy")) {
+                    Destroy(objectHit.gameObject);
+                }
             }
         }
     }
